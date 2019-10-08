@@ -1,5 +1,5 @@
 import React from 'react';
-import avatar from './avatar.png';
+import avatar from './avatar.jpg';
 import { P } from '../../Quarks/P';
 import { Colors } from '../../../theme/colors';
 import { FontSizes } from '../../../theme/fonts';
