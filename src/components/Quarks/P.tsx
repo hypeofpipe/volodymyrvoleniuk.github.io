@@ -1,7 +1,17 @@
 import styled from 'styled-components';
-import { color, ColorProps, fontSize, FontSizeProps } from 'styled-system';
+import {
+  color,
+  ColorProps,
+  fontSize,
+  FontSizeProps,
+  lineHeight,
+  LineHeightProps,
+} from 'styled-system';
 
-export const P = styled.p<ColorProps & FontSizeProps>`
-  ${color}
-  ${fontSize}
+interface Props extends ColorProps, FontSizeProps, LineHeightProps {}
+
+export const P = styled.p<Props>`
+  ${color};
+  ${fontSize};
+  ${lineHeight};
 `;
