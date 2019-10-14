@@ -29,7 +29,9 @@ interface Props
     DisplayProps,
     FlexDirectionProps,
     PaddingProps,
-    BorderRadiusProps {}
+    BorderRadiusProps {
+  float?: string;
+}
 
 export const Wrapper = styled.div<Props>`
   ${display};
@@ -41,4 +43,5 @@ export const Wrapper = styled.div<Props>`
   ${height};
   ${padding};
   ${borderRadius};
+  ${({ float }) => (float ? `float: ${float};` : '')}
 `;
