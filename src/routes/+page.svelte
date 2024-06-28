@@ -1,5 +1,10 @@
 <script>
 	import About from './about.svelte';
+	import InteractiveBackground from '../components/InteractiveBackground.svelte';
 </script>
 
-<About />
+<div>
+	<InteractiveBackground>
+		<About />
+	</InteractiveBackground>
+</div>

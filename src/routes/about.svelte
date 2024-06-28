@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade, fly } from 'svelte/transition';
+
 	import Heading from '../components/Heading.svelte';
 
 	import config from '../config';
@@ -12,26 +14,40 @@
 
 <!-- Page title -->
 <div class="heading">
-	<Heading level="h2" size="2.5rem">{title}</Heading>
+	<Heading level="h2" size="2.5rem">About me</Heading>
 </div>
 
 <!-- Bio paragraphs -->
-<div class="content">
-	<section class="intro">
-		<i>{intro}</i>
-		{#each bio as bioLine}
-			<p class="bio-line">{@html bioLine}</p>
-		{/each}
-	</section>
-
-	<!-- Profile picture (and links to other pages) -->
-	<section class="ugly-picture">
-		<img src={picture} alt="Users profile" />
-	</section>
+<div class="hero-container">
+	<div class="heading" in:fade>
+		<Heading level="h1" size="3rem">{title}</Heading>
+	</div>
+	<div class="content">
+		<section class="intro" in:fly={{ y: 50, duration: 500 }}>
+			<p class="intro-text">{intro}</p>
+			{#each bio as bioLine, i}
+				<p class="bio-line" in:fly={{ y: 20, duration: 300, delay: i * 100 }}>{@html bioLine}</p>
+			{/each}
+		</section>
+		<section class="profile" in:fade={{ duration: 800 }}>
+			<img src={picture} alt="Volodymyr Voleniuk" />
+			<div class="social-links">
+				{#each contact.social as link}
+					<a href={link.url} target="_blank" rel="noopener">{link.name}</a>
+				{/each}
+			</div>
+		</section>
+	</div>
+	<button class="cta-button">Let's Connect</button>
 </div>
 
 <style lang="scss">
 	@import '../styles/media-queries.scss';
+
+	p {
+		color: white;
+		text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+	}
 
 	.heading {
 		margin: 1rem calc(5vw + 1rem) 0;
@@ -79,42 +95,29 @@
 				}
 			}
 		}
-		// Profile pic + link list section
-		&.ugly-picture {
-			display: flex;
-			flex-direction: column;
-			gap: 1rem;
-			img {
-				width: 100%;
-				max-width: 300px;
-				margin: 0 auto;
-				border-radius: var(--curve-factor);
-			}
-			.pages {
-				opacity: 0.9;
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
-				&:hover {
-					opacity: 1;
-				}
-				a {
-					color: var(--page-color, var(--accent));
-					border-radius: var(--curve-factor);
-					padding: 0.25rem 0.5rem;
-					margin: 0.5rem;
-					font-weight: bold;
-					text-decoration: none;
-					transition: all ease-in-out 0.2s;
-					min-width: 5rem;
-					text-align: center;
-					border: 1px solid var(--page-color, var(--accent));
-					&:hover {
-						color: var(--background);
-						background: var(--page-color, var(--accent));
-					}
-				}
-			}
+	}
+
+	.hero-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+		background: linear-gradient(135deg, #1a1a2e, #16213e);
+		border-radius: 1rem;
+	}
+
+	.cta-button {
+		margin-top: 2rem;
+		padding: 1rem 2rem;
+		background-color: var(--accent);
+		color: white;
+		border: none;
+		border-radius: 2rem;
+		font-size: 1.2rem;
+		cursor: pointer;
+		transition: transform 0.2s ease-in-out;
+
+		&:hover {
+			transform: scale(1.05);
 		}
 	}
 </style>
