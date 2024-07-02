@@ -1,5 +1,17 @@
 <script>
-	import Portfolio from './portfolio.svelte';
+	import About from './about.svelte';
+	import InteractiveBackground from '../components/InteractiveBackground.svelte';
 </script>
 
-<Portfolio />
+<div>
+	<InteractiveBackground>
+		<About />
+	</InteractiveBackground>
+</div>
+
+<style>
+	:global(body) {
+		background-color: var(--color-background);
+		color: var(--color-text);
+	}
+</style>

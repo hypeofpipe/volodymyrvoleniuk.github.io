@@ -1,0 +1,20 @@
+:root {
+	--color-background-light: #{$color-background-light};
+	--text-color-light: #{$text-color-light};
+	--color-background-dark: #{$color-background-dark};
+	--text-color-dark: #{$text-color-dark};
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--color-background: var(--color-background-light);
+		--color-text: var(--text-color-light);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: var(--color-background-dark);
+		--color-text: var(--text-color-dark);
+	}
+}
