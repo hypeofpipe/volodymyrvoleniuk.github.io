@@ -44,9 +44,17 @@
 <style lang="scss">
 	@import '../styles/media-queries.scss';
 
+	:global(body) {
+		background-color: var(--color-background);
+		color: var(--color-text);
+	}
+
 	p {
-		color: white;
 		text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+	}
+
+	.hero-container {
+		background: linear-gradient(135deg, var(--color-background), var(--card-background));
 	}
 
 	.heading {
@@ -101,7 +109,7 @@
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 2rem;
-		background: linear-gradient(135deg, #1a1a2e, #16213e);
+		background: var(--color-background);
 		border-radius: 1rem;
 	}
 
@@ -109,7 +117,7 @@
 		margin-top: 2rem;
 		padding: 1rem 2rem;
 		background-color: var(--accent);
-		color: white;
+		color: var(--color-background);
 		border: none;
 		border-radius: 2rem;
 		font-size: 1.2rem;

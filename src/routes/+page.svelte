@@ -8,3 +8,10 @@
 		<About />
 	</InteractiveBackground>
 </div>
+
+<style>
+	:global(body) {
+		background-color: var(--color-background);
+		color: var(--color-text);
+	}
+</style>
